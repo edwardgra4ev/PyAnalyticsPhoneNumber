@@ -7,7 +7,7 @@ API для аналитика номера телефона
 git clone https://github.com/edwardgra4ev/PyAnalyticsPhoneNumber.git
 cd PyAnalyticsPhoneNumber
 uv sync
-uv run uvicorn app.main:app --reload --port 8000
+uv run gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
 ```
 
 Сборка в Docker

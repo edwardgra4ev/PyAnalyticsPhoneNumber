@@ -10,4 +10,4 @@ RUN uv sync
 EXPOSE 8000
 
 # Запускаем FastAPI приложение через uvicorn
-CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv" "run" "gunicorn" "app.main:app" "--workers" "4" "--worker-class" "uvicorn.workers.UvicornWorker" "--bind" "0.0.0.0:8000"]
